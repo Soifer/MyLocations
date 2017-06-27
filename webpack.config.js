@@ -31,7 +31,7 @@ module.exports = {
     rules: [{
         test: /\.js?$/,
         exclude: /(node_modules|bower_components)/,
-        use: ['react-hot-loader', 'babel-loader?babelrc=false,presets[]=es2015,presets[]=react,presets[]=react-hmre,cacheDirectory=false']
+        use: ['react-hot-loader', 'babel-loader?babelrc=true,cacheDirectory=false']
       },
       {
         test: /(\.css)$/,
