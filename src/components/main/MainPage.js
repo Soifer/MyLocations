@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import CategoryPage from '../category/CategoryPage';
 import LocationPage from '../location/LocationPage';
-
 
 class MainPage extends Component {
     render() {

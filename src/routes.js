@@ -8,7 +8,7 @@ import MainPage from './components/main/MainPage';
 
 export default(
     <Route path="/" component={App}>
-        <IndexRoute component={MainPage}/>
+        <IndexRoute component={LocationPage}/>
         <Route path="locations" component={LocationPage}/>
         <Route path="categories" component={CategoryPage}/>
     </Route>
