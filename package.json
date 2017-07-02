@@ -12,6 +12,9 @@
     "eslint": "lint",
     "start": "npm-run-all --parallel  test:watch serve "
   },
+   "compilerOptions": {
+     "target": "ES6"
+  },
   "author": "Mark Soifer",
   "license": "ISC",
   "devDependencies": {
@@ -88,6 +91,7 @@
   "dependencies": {
     "babel-polyfill": "^6.20.0",
     "babel-preset-stage-1": "^6.24.1",
+    "eslint-config-defaults": "^9.0.0",
     "jsx-ast-utils": "^1.4.0",
     "material-design-icons": "^3.0.1",
     "material-ui": "^0.18.3",
