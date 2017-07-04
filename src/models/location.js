@@ -1,10 +1,11 @@
 class Location {
-    constructor() {
-        this.Name = "";
-        this.Address = "";
-        this.Coordinate = "";
-        this.Categories = [];
+    constructor(props) {
+        this.name = "";
+        this.address = "";
+        this.coordinate = "";
+        this.categories = [];
     }
+
 }
 
 export default Location;
