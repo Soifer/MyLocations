@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -9,13 +9,16 @@ class LocationPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            locations: Object.assign({}, this.props.locations), 
+            locations: Object.assign({}, this.props.locations)
         };
     }
+
+    componentDidMount() {
+        this.props.actions.loadToolbar(this.props.locations);
+    }
+
     render() {
-        return (
-              <LocationList locations={this.props.locations}/>               
-        );
+        return (<LocationList locations={this.props.locations}/>);
     }
 }
 
@@ -35,4 +38,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationPage);
-

@@ -11,8 +11,12 @@ class CategoryPage extends Component {
         this.state = {
             categories: Object.assign({}, this.props.categories)
         };
-        console.log("category page",this.props.categories);
     }
+
+    componentDidMount() {
+        this.props.actions.loadToolbar();
+    }
+    
     render() {
         return (
             <CategoryList categories={this.props.categories}/>

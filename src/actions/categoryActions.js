@@ -11,6 +11,15 @@ export function loadCategories(type) {
         return categoryApi.getAllCategories().then(categories => {
             console.log(categories);
             dispatch(loadCategoriesSuccess(categories));
+        }).catch(error => {
+            throw(error);
+        });
+    };
+}
+
+export function loadToolbar(){
+        return function (dispatch) {        
+        return categoryApi.getAllCategories().then(categories => {
             dispatch(setToolbarType("categories"));
         }).catch(error => {
             throw(error);

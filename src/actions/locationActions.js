@@ -10,9 +10,14 @@ export function loadLocations() {
     return function (dispatch) {        
         return locationApi.getAllLocations().then(locations => {
             dispatch(loadLocationsSuccess(locations));
-            dispatch(setToolbarType("locations",locations));
         }).catch(error => {
             throw(error);
         });
+    };
+}
+
+export function loadToolbar(locations){
+        return function (dispatch) {        
+        dispatch(setToolbarType("locations",locations));
     };
 }
