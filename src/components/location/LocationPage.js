@@ -11,7 +11,6 @@ class LocationPage extends Component {
         this.state = {
             locations: Object.assign({}, this.props.locations), 
         };
-        console.log("locations",this.props.locations);
     }
     render() {
         return (

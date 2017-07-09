@@ -12,7 +12,8 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 const styles = {
   gridList: {
     height: 450,
-    backgroundSize: "contain"
+    backgroundSize: "contain",
+    margin:0
   },
   gridTile : {  
     width: "100%"

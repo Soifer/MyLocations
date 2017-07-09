@@ -1,6 +1,6 @@
-class Category {
+class CategoryModel {
     constructor(name) {
         this.Name = name;
     }
 }
-export default Category;
+export default CategoryModel;

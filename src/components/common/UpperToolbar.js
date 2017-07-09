@@ -1,4 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as UpperToolbarActions from '../../actions/upperToolbarActions';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
@@ -8,12 +12,11 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
- class UpperToolbar extends React.Component {
-
+class UpperToolbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 3,
+      value: 3
     };
   }
 
@@ -22,23 +25,22 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui
   render() {
     return (
       <Toolbar>
-        <ToolbarGroup firstChild={true}>
+        {/*<ToolbarGroup firstChild={true}>
           <DropDownMenu value={this.state.value} onChange={this.handleChange}>
-            <MenuItem value={1} primaryText="All Broadcasts" />
-            <MenuItem value={2} primaryText="All Voice" />
-            <MenuItem value={3} primaryText="All Text" />
-            <MenuItem value={4} primaryText="Complete Voice" />
-            <MenuItem value={5} primaryText="Complete Text" />
-            <MenuItem value={6} primaryText="Active Voice" />
-            <MenuItem value={7} primaryText="Active Text" />
+            <MenuItem value={1} primaryText="All Broadcasts"/>
+            <MenuItem value={2} primaryText="All Voice"/>
+            <MenuItem value={3} primaryText="All Text"/>
+            <MenuItem value={4} primaryText="Complete Voice"/>
+            <MenuItem value={5} primaryText="Complete Text"/>
+            <MenuItem value={6} primaryText="Active Voice"/>
+            <MenuItem value={7} primaryText="Active Text"/>
           </DropDownMenu>
-        </ToolbarGroup>
+        </ToolbarGroup>*/}
         <ToolbarGroup>
-          <ToolbarTitle text="Options" />
-          <FontIcon className="muidocs-icon-custom-sort" />
-          <ToolbarSeparator />
-          <RaisedButton label="Create" primary={true} />
-          {/*<IconMenu
+          <ToolbarTitle text={this.props.toolbar.name}/>
+          <FontIcon className="muidocs-icon-custom-sort"/>
+          <ToolbarSeparator/>
+          {/*<RaisedButton label="Create" primary={true}/> <IconMenu
             iconButtonElement={
               <IconButton touch={true}>
                 <NavigationExpandMoreIcon />
@@ -53,4 +55,20 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui
     );
   }
 }
-export default UpperToolbar;
+
+UpperToolbar.propTypes = {
+    toolbar: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+    return {toolbar: state.toolbar};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(UpperToolbarActions, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpperToolbar);
