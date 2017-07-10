@@ -14,6 +14,7 @@ class LocationPage extends Component {
     }
 
     componentDidMount() {
+        console.log("location componentDidMount");
         this.props.actions.loadToolbar(this.props.locations);
     }
 

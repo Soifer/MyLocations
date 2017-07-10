@@ -7,7 +7,7 @@ import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
 import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import {browserHistory} from 'react-router';
-import url from './urlConverter';
+import url from '../../tools/urlConverter';
 
 const categoryIcon = <FontIcon className="material-icons">blur_on</FontIcon>;
 const nearbyIcon = <FontIcon className="material-icons">room</FontIcon>;

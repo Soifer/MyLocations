@@ -14,6 +14,7 @@ class CategoryPage extends Component {
     }
 
     componentDidMount() {
+         console.log("category componentDidMount");
         this.props.actions.loadToolbar(this.props.categories);
     }
     

@@ -11,36 +11,41 @@ import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import ToolbarModel from '../../models/toolbarModel';
 
 class UpperToolbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 3
-    };
+      value: 2,
+      groupValue:1
+    };  
   }
+
+  
 
   handleChange = (event, index, value) => this.setState({value});
 
   render() {
+    // console.log("categ",this.props.toolbar.groupby)
     return (
       <Toolbar>
-        {/*<ToolbarGroup firstChild={true}>
+        <ToolbarGroup firstChild={true}>
           <DropDownMenu value={this.state.value} onChange={this.handleChange}>
-            <MenuItem value={1} primaryText="All Broadcasts"/>
-            <MenuItem value={2} primaryText="All Voice"/>
-            <MenuItem value={3} primaryText="All Text"/>
-            <MenuItem value={4} primaryText="Complete Voice"/>
-            <MenuItem value={5} primaryText="Complete Text"/>
-            <MenuItem value={6} primaryText="Active Voice"/>
-            <MenuItem value={7} primaryText="Active Text"/>
+            <MenuItem value={1} primaryText={this.props.toolbar.sort.az}/>
+            <MenuItem value={2} primaryText={this.props.toolbar.sort.date}/>
           </DropDownMenu>
-        </ToolbarGroup>*/}
+        </ToolbarGroup>
+        <ToolbarGroup>
+          <DropDownMenu value={this.state.groupValue} onChange={this.handleChange}>
+            <MenuItem value={1} primaryText={this.props.toolbar.groupby.length > 0 &&  this.props.toolbar.groupby[0].name}/>
+            {/*<MenuItem value={2} primaryText={this.props.toolbar.groupby[1].name}/>*/}
+          </DropDownMenu>
+        </ToolbarGroup>
         <ToolbarGroup>
           <ToolbarTitle text={this.props.toolbar.name}/>
           <FontIcon className="muidocs-icon-custom-sort"/>
-          <ToolbarSeparator/>
-          {/*<RaisedButton label="Create" primary={true}/> <IconMenu
+          <ToolbarSeparator/> {/*<RaisedButton label="Create" primary={true}/> <IconMenu
             iconButtonElement={
               <IconButton touch={true}>
                 <NavigationExpandMoreIcon />
@@ -56,19 +61,20 @@ class UpperToolbar extends React.Component {
   }
 }
 
+
 UpperToolbar.propTypes = {
-    toolbar: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired
+  toolbar: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-    return {toolbar: state.toolbar};
+  return {toolbar: state.toolbar};
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(UpperToolbarActions, dispatch)
-    };
+  return {
+    actions: bindActionCreators(UpperToolbarActions, dispatch)
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpperToolbar);

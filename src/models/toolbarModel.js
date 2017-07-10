@@ -1,6 +1,6 @@
 class ToolbarModel {
     constructor(props) {
-        this.sort = [{az:"a-z"},{unsorted:"new"}];
+        this.sort = {az:"A..Z" ,date:"DATE"};
         this.groupby = [];
         this.name = "";
     }
