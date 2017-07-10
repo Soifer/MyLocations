@@ -1,5 +1,6 @@
 export default {
     locations : [],
     categories : [],
-    toolbar:{}
+    toolbar:{},
+    selectedIndex:0
 };

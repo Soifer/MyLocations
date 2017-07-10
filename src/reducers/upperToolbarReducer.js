@@ -9,4 +9,4 @@ export default function courseReducer(state = initialState.toolbar, action) {
     default:
       return state;
   }
-}0
+}

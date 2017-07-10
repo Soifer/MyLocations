@@ -91,7 +91,7 @@ const state = {
         </div>
     );
 
-}
+};
 
 CategoryList.propTypes = {
     categories: PropTypes.array.isRequired
