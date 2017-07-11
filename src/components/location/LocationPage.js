@@ -7,21 +7,20 @@ import LocationList from './LocationList';
 
 class LocationPage extends Component {
     constructor(props) {
-        super(props);
-        this.state = {
-            locations: Object.assign({}, this.props.locations)
-        };
+        super(props);                     
     }
 
-    componentDidMount() {
-        console.log("location componentDidMount");
-        this.props.actions.loadToolbar(this.props.locations);
+    componentWillMount(){
+         this.props.actions.loadLocations();  
     }
 
     render() {
         return (<LocationList locations={this.props.locations}/>);
     }
 }
+LocationPage.defaultProps = {
+    locations:[]
+};
 
 LocationPage.propTypes = {
     locations: PropTypes.array.isRequired,

@@ -8,29 +8,28 @@ import CategoryList from './CategoryList';
 class CategoryPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            categories: Object.assign({}, this.props.categories)
-        };
     }
-
-    componentDidMount() {
-         console.log("category componentDidMount");
+   componentWillMount(){
         this.props.actions.loadToolbar(this.props.categories);
     }
-    
-    render() {
+    render() {        
         return (
             <CategoryList categories={this.props.categories}/>
         );
     }
 }
 
+CategoryPage.defaultProps = {
+    categories:[]
+};
+
 CategoryPage.propTypes = {
     categories: PropTypes.array.isRequired,
     actions: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
+
+function mapStateToProps(state, ownProps) {    
     return {categories: state.categories};
 }
 

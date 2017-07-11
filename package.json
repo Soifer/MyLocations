@@ -12,8 +12,8 @@
     "eslint": "lint",
     "start": "npm-run-all --parallel  test:watch serve "
   },
-   "compilerOptions": {
-     "target": "ES6"
+  "compilerOptions": {
+    "target": "ES6"
   },
   "author": "Mark Soifer",
   "license": "ISC",
@@ -97,6 +97,7 @@
     "material-ui": "^0.18.3",
     "material-ui-icons": "^1.0.0-alpha.19",
     "prop-types": "^15.5.10",
+    "react-router-redux": "^4.0.8",
     "react-toastr": "^2.8.2",
     "toastr": "^2.1.2"
   },

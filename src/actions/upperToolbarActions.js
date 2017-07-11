@@ -1,26 +1,29 @@
 import * as types from './actionTypes';
 import ToolbarModel from '../models/toolbarModel';
-import {loadLocations}  from './locationActions';
+import {loadLocations} from './locationActions';
 import {loadCategories} from './categoryActions';
 
 export function setToolbarTypeSuccess(toolbar) {
     return {type: types.SET_TOOLBAR_TYPE_SUCCESS, toolbar};
 }
 
-
 export function initToolbarType() {
     return function (dispatch) {
-    let toolbar = new ToolbarModel();
-    dispatch(setToolbarTypeSuccess(toolbar));
-    dispatch(loadLocations());
-    dispatch(loadCategories());
-    }
-;}
+        // let toolbar = new ToolbarModel(); dispatch(setToolbarTypeSuccess(toolbar));
+        // dispatch(loadLocations()); dispatch(loadCategories());
+
+            let toolbar = new ToolbarModel();
+            dispatch(setToolbarTypeSuccess(toolbar));
+            // dispatch(loadLocations());
+            // dispatch(loadCategories());
+            // .catch((error)=>{console.log("oops, something went wrong: "+ error)});
+    };
+}
 
 export function setToolbarType(type, list) {
     return function (dispatch) {
         let toolbar = new ToolbarModel();
-        console.log("toolbar",toolbar);
+        console.log("toolbar", toolbar);
         switch (type) {
             case 'locations':
                 toolbar.groupby = list;
@@ -34,7 +37,7 @@ export function setToolbarType(type, list) {
                 dispatch(setToolbarTypeSuccess(toolbar));
                 break;
             default:
-               dispatch(setToolbarTypeSuccess(toolbar));
+                dispatch(setToolbarTypeSuccess(toolbar));
                 break;
         }
         // return locationApi.getAllLocations().then(locations => {

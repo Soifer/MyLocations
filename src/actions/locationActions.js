@@ -11,7 +11,8 @@ export function loadLocationsSuccess(locations) {
 export function loadLocations() {
     return function (dispatch) {        
         return locationApi.getAllLocations().then(locations => {
-            dispatch(loadLocationsSuccess(locations));
+            dispatch(loadLocationsSuccess(locations));          
+            dispatch(loadToolbar(locations)); 
         }).catch(error => {
             throw(error);
         });

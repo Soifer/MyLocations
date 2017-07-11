@@ -6,10 +6,12 @@ import CategoryPage from './components/category/CategoryPage';
 import LocationPage from './components/location/LocationPage';
 import MainPage from './components/main/MainPage';
 
-export default(
+export const getRoutes = (store) => {
+  return (
     <Route path="/" component={App}>
         <IndexRoute component={LocationPage}/>
-        <Route path="locations" component={LocationPage}/>
         <Route path="categories" component={CategoryPage}/>
+        <Route path="locations"  component={LocationPage}/>        
     </Route>
-);
+  );
+};

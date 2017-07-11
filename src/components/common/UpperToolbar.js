@@ -16,30 +16,29 @@ import ToolbarModel from '../../models/toolbarModel';
 class UpperToolbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: 2,
-      groupValue:1
-    };  
+    // this.state = {
+    //   value: 2,
+    //   groupValue: 1
+    // };
   }
 
-  
-
-  handleChange = (event, index, value) => this.setState({value});
+  handleChange = ()=>{return "";};
 
   render() {
     // console.log("categ",this.props.toolbar.groupby)
     return (
       <Toolbar>
         <ToolbarGroup firstChild={true}>
-          <DropDownMenu value={this.state.value} onChange={this.handleChange}>
+          <DropDownMenu value={1} onChange={this.handleChange}>
             <MenuItem value={1} primaryText={this.props.toolbar.sort.az}/>
             <MenuItem value={2} primaryText={this.props.toolbar.sort.date}/>
           </DropDownMenu>
         </ToolbarGroup>
         <ToolbarGroup>
-          <DropDownMenu value={this.state.groupValue} onChange={this.handleChange}>
-            <MenuItem value={1} primaryText={this.props.toolbar.groupby.length > 0 &&  this.props.toolbar.groupby[0].name}/>
-            {/*<MenuItem value={2} primaryText={this.props.toolbar.groupby[1].name}/>*/}
+          <DropDownMenu value={1} onChange={this.handleChange}>
+            <MenuItem
+              value={1}
+              primaryText={this.props.toolbar.groupby.length > 0 && this.props.toolbar.groupby[0].name}/>
           </DropDownMenu>
         </ToolbarGroup>
         <ToolbarGroup>
@@ -68,6 +67,11 @@ UpperToolbar.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+   let toolbar = {};
+   toolbar = new ToolbarModel();
+  if(!state.toolbar.hasOwnProperty("name")){
+      return{ toolbar:toolbar};
+  }
   return {toolbar: state.toolbar};
 }
 

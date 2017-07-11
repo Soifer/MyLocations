@@ -10,7 +10,7 @@ export function loadCategoriesSuccess(categories) {
 export function loadCategories(type) {
     return function (dispatch) {        
         return categoryApi.getAllCategories().then(categories => {
-            console.log(categories);
+            //dispatch(loadToolbar(categories));
             dispatch(loadCategoriesSuccess(categories));
         }).catch(error => {
             throw(error);
