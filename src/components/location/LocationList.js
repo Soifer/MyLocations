@@ -13,7 +13,8 @@ const styles = {
   gridList: {
     height: 450,
     backgroundSize: "contain",
-    margin:0
+    margin:0,
+    marginTop:56
   },
   gridTile : {  
     width: "100%"

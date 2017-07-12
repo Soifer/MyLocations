@@ -9,6 +9,10 @@ export function loadLocationsSuccess(locations) {
     return {type: types.LOAD_LOCATIONS_SUCCESS, locations};
 }
 
+export function sortByLocationsSuccess(locations) {
+    return {type: types.SORTBY_LOCATIONS_SUCCESS };
+}
+
 export function loadLocations() {
     return function (dispatch) {    
         return locationApi.getAllLocations().then(data => {
@@ -19,7 +23,11 @@ export function loadLocations() {
         });
     };
 }
-
+export function locationsSortBy(){
+     return function (dispatch) {  
+           dispatch(sortByLocationsSuccess());
+     };
+}
 export function loadToolbar(data){
         return function (dispatch) {     
             console.log("loc categ",data);

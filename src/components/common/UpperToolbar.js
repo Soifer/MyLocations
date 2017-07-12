@@ -17,26 +17,42 @@ class UpperToolbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 2,
+      sortValue: 1,
       groupValue: 1
     };
   }
+  toolbarStyle = {
+    backgroundColor: "rgb(68, 0, 22)",
+    position:"fixed",
+    top:0,
+    zIndex:10,
+    width:"100%"
+  };
+  titleStyle = {
+     color: "rgb(0, 151, 167)"
+  };
 
-  handleChange = ()=>{return "";};
+   handleChangeSortBy = (event, index, sortValue) =>{
+      this.setState({sortValue});
+      this.props.actions.sortBy(this.props.toolbar.name);
+    }
+   handleChangeGroupBy = (event, index, groupValue) => {
+     this.setState({groupValue});
+    // this.props.actions.groupBy(this.props.toolbar.name);
+    }
 
   render() {
-    // console.log("categ",this.props.toolbar.groupby)
     return (
-      <Toolbar>
+      <Toolbar style={this.toolbarStyle}>
         <ToolbarGroup firstChild={true}>
-          <DropDownMenu value={1} onChange={this.handleChange}>
+          <DropDownMenu value={this.state.sortValue} onChange={this.handleChangeSortBy}>
             <MenuItem value={1} primaryText={this.props.toolbar.sort.az}/>
             <MenuItem value={2} primaryText={this.props.toolbar.sort.date}/>
           </DropDownMenu>
         </ToolbarGroup>
        { this.props.toolbar.groupby.length > 0 &&
         <ToolbarGroup>
-          <DropDownMenu value={1} onChange={this.handleChange}>
+          <DropDownMenu value={this.state.groupValue} onChange={this.handleChangeGroupBy}>
             {this.props.toolbar.groupby.map((item,index)=>(
                 <MenuItem key={item.name + index} value={index} primaryText={item.name}/>
             ))}           
@@ -44,7 +60,7 @@ class UpperToolbar extends React.Component {
         </ToolbarGroup>
         }
         <ToolbarGroup>
-          <ToolbarTitle text={this.props.toolbar.name}/>
+          <ToolbarTitle style={this.titleStyle} text={this.props.toolbar.name}/>
           <FontIcon className="muidocs-icon-custom-sort"/>
           <ToolbarSeparator/> {/*<RaisedButton label="Create" primary={true}/> <IconMenu
             iconButtonElement={

@@ -12,7 +12,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <MuiThemeProvider>
+                <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)} >
                     <UpperToolbar/>
                 </MuiThemeProvider>
                 {this.props.children}

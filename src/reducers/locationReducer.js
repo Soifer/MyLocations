@@ -6,11 +6,14 @@ export default function courseReducer(state = initialState.locations, action) {
     case types.LOAD_LOCATIONS_SUCCESS:
       return action.locations;
  
-    // case types.CREATE_LOACATION_SUCCESS:
-    //   return [
-    //     ...state,
-    //     Object.assign({}, action.location)
-    //   ];
+    case types.SORTBY_LOCATIONS_SUCCESS:
+    
+      return [...state.slice(0,state.length).sort(function(a, b) {
+                let textA = a.name.toUpperCase();
+                let textB = b.name.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+                })
+            ];
     default:
       return state;
   }
