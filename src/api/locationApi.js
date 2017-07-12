@@ -1,3 +1,5 @@
+import categoryApi from './categoryApi';  
+
 const locationsList = [
     {
         name: "Haifa",
@@ -23,10 +25,13 @@ const locationsList = [
 class LocationApi {
     static getAllLocations() {      
         return new Promise((resolve, reject) => {
-            const locations = JSON.parse(localStorage.getItem('locations'));
-            resolve(
-                Object.assign([], locations)                
-            );
+            const locations = JSON.parse(localStorage.getItem('locations'));            
+             categoryApi.getAllCategories().then((categories)=>{
+                 console.log("apiLocations",locations);
+              resolve(
+                     Object.assign([], {locations,categories})                
+                  );
+            });
         });
     }
 }

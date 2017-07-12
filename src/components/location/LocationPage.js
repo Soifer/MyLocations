@@ -7,11 +7,11 @@ import LocationList from './LocationList';
 
 class LocationPage extends Component {
     constructor(props) {
-        super(props);                     
+        super(props);
     }
 
-    componentWillMount(){
-         this.props.actions.loadLocations();  
+    componentWillMount() {
+        this.props.actions.loadLocations();
     }
 
     render() {
@@ -19,7 +19,7 @@ class LocationPage extends Component {
     }
 }
 LocationPage.defaultProps = {
-    locations:[]
+    locations: []
 };
 
 LocationPage.propTypes = {
@@ -28,7 +28,9 @@ LocationPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-    return {locations: state.locations};
+    return{
+         locations: state.locations
+        };
 }
 
 function mapDispatchToProps(dispatch) {

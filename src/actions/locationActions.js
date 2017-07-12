@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 import locationApi from '../api/locationApi';
 import {setToolbarType} from './upperToolbarActions';
+import {loadCategories} from './categoryActions';
 import {setBottomToolbarType} from './bottomToolbarActions';
 import url from '../tools/urlConverter';
  
@@ -9,19 +10,20 @@ export function loadLocationsSuccess(locations) {
 }
 
 export function loadLocations() {
-    return function (dispatch) {        
-        return locationApi.getAllLocations().then(locations => {
-            dispatch(loadLocationsSuccess(locations));          
-            dispatch(loadToolbar(locations)); 
+    return function (dispatch) {    
+        return locationApi.getAllLocations().then(data => {
+            dispatch(loadLocationsSuccess(data.locations));       
+            dispatch(loadToolbar(data)); 
         }).catch(error => {
             throw(error);
         });
     };
 }
 
-export function loadToolbar(locations){
+export function loadToolbar(data){
         return function (dispatch) {     
-        dispatch(setToolbarType("locations",locations));
+            console.log("loc categ",data);
+        dispatch(setToolbarType("locations",data));
         dispatch(setBottomToolbarType(0));        
     };
 }

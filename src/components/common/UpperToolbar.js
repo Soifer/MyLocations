@@ -16,10 +16,10 @@ import ToolbarModel from '../../models/toolbarModel';
 class UpperToolbar extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   value: 2,
-    //   groupValue: 1
-    // };
+    this.state = {
+      value: 2,
+      groupValue: 1
+    };
   }
 
   handleChange = ()=>{return "";};
@@ -34,13 +34,15 @@ class UpperToolbar extends React.Component {
             <MenuItem value={2} primaryText={this.props.toolbar.sort.date}/>
           </DropDownMenu>
         </ToolbarGroup>
+       { this.props.toolbar.groupby.length > 0 &&
         <ToolbarGroup>
           <DropDownMenu value={1} onChange={this.handleChange}>
-            <MenuItem
-              value={1}
-              primaryText={this.props.toolbar.groupby.length > 0 && this.props.toolbar.groupby[0].name}/>
+            {this.props.toolbar.groupby.map((item,index)=>(
+                <MenuItem key={item.name + index} value={index} primaryText={item.name}/>
+            ))}           
           </DropDownMenu>
         </ToolbarGroup>
+        }
         <ToolbarGroup>
           <ToolbarTitle text={this.props.toolbar.name}/>
           <FontIcon className="muidocs-icon-custom-sort"/>

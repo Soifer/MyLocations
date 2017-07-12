@@ -9,24 +9,21 @@ export function setToolbarTypeSuccess(toolbar) {
 
 export function initToolbarType() {
     return function (dispatch) {
-        // let toolbar = new ToolbarModel(); dispatch(setToolbarTypeSuccess(toolbar));
-        // dispatch(loadLocations()); dispatch(loadCategories());
-
-            let toolbar = new ToolbarModel();
-            dispatch(setToolbarTypeSuccess(toolbar));
-            // dispatch(loadLocations());
-            // dispatch(loadCategories());
-            // .catch((error)=>{console.log("oops, something went wrong: "+ error)});
+        let toolbar = new ToolbarModel();
+        dispatch(setToolbarTypeSuccess(toolbar));
     };
 }
 
-export function setToolbarType(type, list) {
+export function setToolbarType(type, data) {
     return function (dispatch) {
         let toolbar = new ToolbarModel();
         console.log("toolbar", toolbar);
         switch (type) {
             case 'locations':
-                toolbar.groupby = list;
+                console.log("case locations", data.categories);
+                toolbar.groupby = data.categories.length > 0
+                    ? data.categories
+                    : [];
                 toolbar.name = type;
                 console.log("type", toolbar);
                 dispatch(setToolbarTypeSuccess(toolbar));
@@ -40,8 +37,5 @@ export function setToolbarType(type, list) {
                 dispatch(setToolbarTypeSuccess(toolbar));
                 break;
         }
-        // return locationApi.getAllLocations().then(locations => {
-        // dispatch(setLocationsToolbarSuccess(locations)); }).catch(error => {
-        // throw(error); });
     };
 }
