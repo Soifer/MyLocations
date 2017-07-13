@@ -19,7 +19,7 @@ export default function courseReducer(state = initialState.locations, action) {
                 let textB = b.id;
                 return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
                 })
-            ]; 
+            ];      
     default:
       return state;
   }

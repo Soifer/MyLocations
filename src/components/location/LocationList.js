@@ -21,18 +21,29 @@ const styles = {
 }
 };
 
-const LocationList = ({locations}) => {
-    return (
+const LocationList = ({locations, groupby}) => {
+  let groupedLocations = [];
+  if (groupby!=='') {
+    groupedLocations = locations.filter((location)=>{
+      if(location.categories.includes(groupby))
+        return location;
+    });
+  }
+  else{
+    groupedLocations = locations;
+  }
+  console.log("groupby",groupby);
+  return (
   <div>
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-    <GridList
+     <GridList
           cols={2}
           rows={2}
           padding={2}
           cellHeight={180}
           style={styles.gridList}
           >
-      {locations.map((location, index) => (
+      {groupedLocations.map((location, index) => (
         <GridTile
           titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
           key={index}
@@ -41,8 +52,7 @@ const LocationList = ({locations}) => {
           actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
           style={styles.gridTile}
           rows={index%5 == 0 ? 2 : 1}
-          cols={index%5 == 0 ? 2 : 1}
-        >
+          cols={index%5 == 0 ? 2 : 1}>
           <img  src="src/tools/images/map.jpg" />
         </GridTile>
       ))}
@@ -54,7 +64,8 @@ const LocationList = ({locations}) => {
 
 
 LocationList.propTypes = {
-    locations: PropTypes.array.isRequired
+    locations: PropTypes.array.isRequired,
+    groupby: PropTypes.string.isRequired
 };
 
 export default LocationList;

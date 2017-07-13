@@ -2,5 +2,6 @@ export default {
     locations : [],
     categories : [],
     toolbar : {},
-    selectedIndex : 0
+    selectedIndex : 0,
+    groupby: ''
 };

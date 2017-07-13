@@ -3,6 +3,7 @@ import locations from './locationReducer';
 import categories from './categoryReducer';
 import toolbar from './upperToolbarReducer';
 import selectedIndex from './bottomToolbarReducer';
+import groupby from './groupByCategoriesReducer';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
     toolbar,
     categories,
     selectedIndex,
+    groupby,
     routing: routerReducer
 });
 

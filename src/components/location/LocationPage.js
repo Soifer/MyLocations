@@ -15,22 +15,25 @@ class LocationPage extends Component {
     }
 
     render() {
-        return (<LocationList locations={this.props.locations}/>);
+        return (<LocationList locations={this.props.locations} groupby={this.props.groupby}/>);
     }
 }
 
 LocationPage.defaultProps = {
-    locations: []
+    locations: [],
+    groupby: '-1'
 };
 
 LocationPage.propTypes = {
     locations: PropTypes.array.isRequired,
+    groupby:PropTypes.string,
     actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
     return{
-         locations: state.locations
+         locations: state.locations,
+         groupby: state.groupby
     };
 }
 

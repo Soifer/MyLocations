@@ -18,7 +18,7 @@ class UpperToolbar extends React.Component {
     super(props);
     this.state = {
       sortValue: this.props.toolbar.sort.date,
-      groupValue: 1
+      groupValue: ''
     };
   }
   toolbarStyle = {
@@ -38,7 +38,7 @@ class UpperToolbar extends React.Component {
     }
    handleChangeGroupBy = (event, index, groupValue) => {
      this.setState({groupValue});
-    // this.props.actions.groupBy(this.props.toolbar.name);
+     this.props.actions.groupBy(this.props.toolbar.name, groupValue);
     }
 
   render() {
@@ -54,8 +54,9 @@ class UpperToolbar extends React.Component {
        { this.props.toolbar.groupby.length > 0 &&
         <ToolbarGroup>
           <DropDownMenu value={this.state.groupValue} onChange={this.handleChangeGroupBy}>
+            <MenuItem key={0} value={''} primaryText={'ungroup'} label="ungrouped"/>
             {this.props.toolbar.groupby.map((item,index)=>(
-                <MenuItem key={item.name + index} value={index} primaryText={item.name}/>
+                <MenuItem key={item.name + index} value={item.name} primaryText={item.name}/>
             ))}           
           </DropDownMenu>
           <ToolbarSeparator/>

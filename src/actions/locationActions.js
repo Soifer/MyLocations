@@ -4,6 +4,7 @@ import {setToolbarType} from './upperToolbarActions';
 import {loadCategories} from './categoryActions';
 import {setBottomToolbarType} from './bottomToolbarActions';
 import {sortTypes} from '../tools/constants';
+import {groupByCategories} from './groupByCategoriesActions';
 
 export function loadLocationsSuccess(locations) {
     return {type: types.LOAD_LOCATIONS_SUCCESS, locations};
@@ -20,6 +21,7 @@ export function sortByLocationsSuccess(sort) {
     }    
 }
 
+
 export function loadLocations() {
     return function (dispatch) {
         return locationApi
@@ -33,11 +35,13 @@ export function loadLocations() {
             });
     };
 }
+
 export function locationsSortBy(sort) {
     return function (dispatch) {
         dispatch(sortByLocationsSuccess(sort));
     };
 }
+
 export function loadToolbar(data) {
     return function (dispatch) {
         console.log("loc categ", data);
@@ -45,3 +49,4 @@ export function loadToolbar(data) {
         dispatch(setBottomToolbarType(0));
     };
 }
+

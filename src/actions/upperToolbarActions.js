@@ -2,7 +2,7 @@ import * as types from './actionTypes';
 import ToolbarModel from '../models/toolbarModel';
 import {loadLocations} from './locationActions';
 import {loadCategories} from './categoryActions';
-import {proxySortBy} from './componentsProxyActions';
+import {proxySortBy, proxyGroupBy} from './componentsProxyActions';
 import {pageComponents} from '../tools/constants';
  
 export function setToolbarTypeSuccess(toolbar) {
@@ -17,7 +17,7 @@ export function sortBy(type,sort) {
 
 export function groupBy(type, group) {
     return function (dispatch) {        
-        dispatch(proxySortBy(pageComponents[type], group));
+        dispatch(proxyGroupBy(pageComponents[type], group));
     };
 }
 
