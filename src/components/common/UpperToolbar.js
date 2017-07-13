@@ -17,7 +17,7 @@ class UpperToolbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sortValue: 1,
+      sortValue: this.props.toolbar.sort.date,
       groupValue: 1
     };
   }
@@ -34,7 +34,7 @@ class UpperToolbar extends React.Component {
 
    handleChangeSortBy = (event, index, sortValue) =>{
       this.setState({sortValue});
-      this.props.actions.sortBy(this.props.toolbar.name);
+      this.props.actions.sortBy(this.props.toolbar.name,sortValue);
     }
    handleChangeGroupBy = (event, index, groupValue) => {
      this.setState({groupValue});
@@ -46,9 +46,10 @@ class UpperToolbar extends React.Component {
       <Toolbar style={this.toolbarStyle}>
         <ToolbarGroup firstChild={true}>
           <DropDownMenu value={this.state.sortValue} onChange={this.handleChangeSortBy}>
-            <MenuItem value={1} primaryText={this.props.toolbar.sort.az}/>
-            <MenuItem value={2} primaryText={this.props.toolbar.sort.date}/>
+            <MenuItem value={this.props.toolbar.sort.date} primaryText={this.props.toolbar.sort.date}/>
+            <MenuItem value={this.props.toolbar.sort.az} primaryText={this.props.toolbar.sort.az}/>
           </DropDownMenu>
+          <ToolbarSeparator/>
         </ToolbarGroup>
        { this.props.toolbar.groupby.length > 0 &&
         <ToolbarGroup>
@@ -57,12 +58,13 @@ class UpperToolbar extends React.Component {
                 <MenuItem key={item.name + index} value={index} primaryText={item.name}/>
             ))}           
           </DropDownMenu>
+          <ToolbarSeparator/>
         </ToolbarGroup>
         }
         <ToolbarGroup>
           <ToolbarTitle style={this.titleStyle} text={this.props.toolbar.name}/>
           <FontIcon className="muidocs-icon-custom-sort"/>
-          <ToolbarSeparator/> {/*<RaisedButton label="Create" primary={true}/> <IconMenu
+          {/*<RaisedButton label="Create" primary={true}/> <IconMenu
             iconButtonElement={
               <IconButton touch={true}>
                 <NavigationExpandMoreIcon />

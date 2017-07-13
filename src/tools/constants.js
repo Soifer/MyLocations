@@ -1,5 +1,9 @@
-const pageComponents = {
+export const pageComponents = {
     locations: "locations",
     categories: "categories"
 };
-export default pageComponents;
+export const sortTypes = {
+     az : "A..Z",
+     date: "DATE"
+};
+

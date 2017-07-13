@@ -1,5 +1,6 @@
 class Location {
     constructor(props) {
+        this.id = "";
         this.name = "";
         this.address = "";
         this.coordinate = "";

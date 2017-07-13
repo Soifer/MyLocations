@@ -1,9 +1,12 @@
 const categoriesList = [
     {
+        id: 1,
         name: "work"
     }, {
+        id:2,
         name: "home"
     }, {
+        id: 3,
         name: "parents"
     }
 ];

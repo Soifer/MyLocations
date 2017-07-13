@@ -4,7 +4,7 @@ import App from './components/App';
 import {Router, Route, IndexRoute} from 'react-router';
 import CategoryPage from './components/category/CategoryPage';
 import LocationPage from './components/location/LocationPage';
-import MainPage from './components/main/MainPage';
+
 
 export const getRoutes = (store) => {
   return (

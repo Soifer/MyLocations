@@ -3,35 +3,45 @@ import locationApi from '../api/locationApi';
 import {setToolbarType} from './upperToolbarActions';
 import {loadCategories} from './categoryActions';
 import {setBottomToolbarType} from './bottomToolbarActions';
-import url from '../tools/urlConverter';
- 
+import {sortTypes} from '../tools/constants';
+
 export function loadLocationsSuccess(locations) {
     return {type: types.LOAD_LOCATIONS_SUCCESS, locations};
 }
 
-export function sortByLocationsSuccess(locations) {
-    return {type: types.SORTBY_LOCATIONS_SUCCESS };
+export function sortByLocationsSuccess(sort) {
+    switch (sort) {
+        case sortTypes.az:
+        return {type: types.SORTBY_LOCATIONS_SUCCESS_BY_AZ};
+        case sortTypes.date:
+        return {type: types.SORTBY_LOCATIONS_SUCCESS_BY_DATE};
+        default:
+            break;
+    }    
 }
 
 export function loadLocations() {
-    return function (dispatch) {    
-        return locationApi.getAllLocations().then(data => {
-            dispatch(loadLocationsSuccess(data.locations));       
-            dispatch(loadToolbar(data)); 
-        }).catch(error => {
-            throw(error);
-        });
+    return function (dispatch) {
+        return locationApi
+            .getAllLocations()
+            .then(data => {
+                dispatch(loadLocationsSuccess(data.locations));
+                dispatch(loadToolbar(data));
+            })
+            .catch(error => {
+                throw(error);
+            });
     };
 }
-export function locationsSortBy(){
-     return function (dispatch) {  
-           dispatch(sortByLocationsSuccess());
-     };
+export function locationsSortBy(sort) {
+    return function (dispatch) {
+        dispatch(sortByLocationsSuccess(sort));
+    };
 }
-export function loadToolbar(data){
-        return function (dispatch) {     
-            console.log("loc categ",data);
-        dispatch(setToolbarType("locations",data));
-        dispatch(setBottomToolbarType(0));        
+export function loadToolbar(data) {
+    return function (dispatch) {
+        console.log("loc categ", data);
+        dispatch(setToolbarType("locations", data));
+        dispatch(setBottomToolbarType(0));
     };
 }

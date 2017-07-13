@@ -1,6 +1,6 @@
 import {locationsSortBy} from './locationActions';
 import {loadCategories} from './categoryActions';
-import pageComponents from '../tools/constants';
+import {pageComponents} from '../tools/constants';
 
 export function proxySortBy(type, sort) {
     switch (type) {
@@ -15,5 +15,4 @@ export function proxySortBy(type, sort) {
         default:
             break;
     }
-
 }

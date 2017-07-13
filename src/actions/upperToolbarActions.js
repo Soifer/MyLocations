@@ -3,7 +3,7 @@ import ToolbarModel from '../models/toolbarModel';
 import {loadLocations} from './locationActions';
 import {loadCategories} from './categoryActions';
 import {proxySortBy} from './componentsProxyActions';
-import pageComponents from '../tools/constants';
+import {pageComponents} from '../tools/constants';
  
 export function setToolbarTypeSuccess(toolbar) {
     return {type: types.SET_TOOLBAR_TYPE_SUCCESS, toolbar};
@@ -11,13 +11,13 @@ export function setToolbarTypeSuccess(toolbar) {
 
 export function sortBy(type,sort) {
     return function (dispatch) {        
-        dispatch(proxySortBy(pageComponents[type]));
+        dispatch(proxySortBy(pageComponents[type], sort));
     };
 }
 
-export function groupBy(type) {
+export function groupBy(type, group) {
     return function (dispatch) {        
-        dispatch(proxySortBy(pageComponents[type]));
+        dispatch(proxySortBy(pageComponents[type], group));
     };
 }
 

@@ -18,6 +18,7 @@ class LocationPage extends Component {
         return (<LocationList locations={this.props.locations}/>);
     }
 }
+
 LocationPage.defaultProps = {
     locations: []
 };
@@ -30,7 +31,7 @@ LocationPage.propTypes = {
 function mapStateToProps(state, ownProps) {
     return{
          locations: state.locations
-        };
+    };
 }
 
 function mapDispatchToProps(dispatch) {
