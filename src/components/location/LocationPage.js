@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as locationActions from '../../actions/locationActions';
 import LocationList from './LocationList';
 
@@ -15,7 +15,11 @@ class LocationPage extends Component {
     }
 
     render() {
-        return (<LocationList locations={this.props.locations} groupby={this.props.groupby}/>);
+        return (
+            <div>
+                <LocationList locations={this.props.locations} groupby={this.props.groupby} />
+            </div>
+        );
     }
 }
 
@@ -26,14 +30,14 @@ LocationPage.defaultProps = {
 
 LocationPage.propTypes = {
     locations: PropTypes.array.isRequired,
-    groupby:PropTypes.string,
+    groupby: PropTypes.string,
     actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-    return{
-         locations: state.locations,
-         groupby: state.groupby
+    return {
+        locations: state.locations,
+        groupby: state.groupby
     };
 }
 

@@ -35,7 +35,8 @@ const LocationList = ({locations, groupby}) => {
   console.log("groupby",groupby);
   return (
   <div>
-      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+
+       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
      <GridList
           cols={2}
           rows={2}
@@ -43,7 +44,7 @@ const LocationList = ({locations, groupby}) => {
           cellHeight={180}
           style={styles.gridList}
           >
-      {groupedLocations.map((location, index) => (
+       {groupedLocations.map((location, index) => (
         <GridTile
           titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
           key={index}
@@ -55,9 +56,9 @@ const LocationList = ({locations, groupby}) => {
           cols={index%5 == 0 ? 2 : 1}>
           <img  src="src/tools/images/map.jpg" />
         </GridTile>
-      ))}
+      ))} 
     </GridList>
-    </MuiThemeProvider>
+    </MuiThemeProvider> 
   </div>
     );
 };

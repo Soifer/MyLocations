@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as UpperToolbarActions from '../../actions/upperToolbarActions';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
@@ -10,8 +10,11 @@ import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-mo
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import RaisedButton from 'material-ui/RaisedButton';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 import ToolbarModel from '../../models/toolbarModel';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+
 
 class UpperToolbar extends React.Component {
   constructor(props) {
@@ -23,64 +26,58 @@ class UpperToolbar extends React.Component {
   }
   toolbarStyle = {
     backgroundColor: "rgb(68, 0, 22)",
-    position:"fixed",
-    top:0,
-    zIndex:10,
-    width:"100%"
+    position: "fixed",
+    top: 0,
+    zIndex: 10,
+    width: "100%"
   };
   titleStyle = {
-     color: "rgb(0, 151, 167)"
+    color: "rgb(0, 151, 167)"
   };
 
-   handleChangeSortBy = (event, index, sortValue) =>{
-      this.setState({sortValue});
-      this.props.actions.sortBy(this.props.toolbar.name,sortValue);
-    }
-   handleChangeGroupBy = (event, index, groupValue) => {
-     this.setState({groupValue});
-     this.props.actions.groupBy(this.props.toolbar.name, groupValue);
-    }
+  handleChangeSortBy = (event, index, sortValue) => {
+    this.setState({ sortValue });
+    this.props.actions.sortBy(this.props.toolbar.name, sortValue);
+  }
+  handleChangeGroupBy = (event, index, groupValue) => {
+    this.setState({ groupValue });
+    this.props.actions.groupBy(this.props.toolbar.name, groupValue);
+  }
 
   render() {
     return (
       <Toolbar style={this.toolbarStyle}>
         <ToolbarGroup firstChild={true}>
           <DropDownMenu value={this.state.sortValue} onChange={this.handleChangeSortBy}>
-            <MenuItem value={this.props.toolbar.sort.date} primaryText={this.props.toolbar.sort.date}/>
-            <MenuItem value={this.props.toolbar.sort.az} primaryText={this.props.toolbar.sort.az}/>
+            <MenuItem value={this.props.toolbar.sort.date} primaryText={this.props.toolbar.sort.date} />
+            <MenuItem value={this.props.toolbar.sort.az} primaryText={this.props.toolbar.sort.az} />
           </DropDownMenu>
-          <ToolbarSeparator/>
+          <ToolbarSeparator />
         </ToolbarGroup>
-       { this.props.toolbar.groupby.length > 0 &&
-        <ToolbarGroup>
-          <DropDownMenu value={this.state.groupValue} onChange={this.handleChangeGroupBy}>
-            <MenuItem key={0} value={''} primaryText={'ungroup'} label="ungrouped"/>
-            {this.props.toolbar.groupby.map((item,index)=>(
-                <MenuItem key={item.name + index} value={item.name} primaryText={item.name}/>
-            ))}           
-          </DropDownMenu>
-          <ToolbarSeparator/>
-        </ToolbarGroup>
+        {this.props.toolbar.groupby.length > 0 &&
+          <ToolbarGroup>
+            <DropDownMenu value={this.state.groupValue} onChange={this.handleChangeGroupBy}>
+              <MenuItem key={0} value={''} primaryText={'ungroup'} label="ungrouped" />
+              {this.props.toolbar.groupby.map((item, index) => (
+                <MenuItem key={item.name + index} value={item.name} primaryText={item.name} />
+              ))}
+            </DropDownMenu>
+            <ToolbarSeparator />
+          </ToolbarGroup>
         }
         <ToolbarGroup>
-          <ToolbarTitle style={this.titleStyle} text={this.props.toolbar.name}/>
-          <FontIcon className="muidocs-icon-custom-sort"/>
-          {/*<RaisedButton label="Create" primary={true}/> <IconMenu
-            iconButtonElement={
-              <IconButton touch={true}>
-                <NavigationExpandMoreIcon />
-              </IconButton>
-            }
-          >
-            <MenuItem primaryText="Download" />
-            <MenuItem primaryText="More Info" />
-          </IconMenu>*/}
+          <ToolbarTitle style={this.titleStyle} text={this.props.toolbar.name} />
+          <FontIcon className="muidocs-icon-custom-sort" />
+        </ToolbarGroup>
+        <ToolbarGroup>
+          <FloatingActionButton mini={true}>
+            <ContentAdd />
+          </FloatingActionButton>
         </ToolbarGroup>
       </Toolbar>
     );
   }
 }
-
 
 UpperToolbar.propTypes = {
   toolbar: PropTypes.object.isRequired,
@@ -88,12 +85,12 @@ UpperToolbar.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-   let toolbar = {};
-   toolbar = new ToolbarModel();
-  if(!state.toolbar.hasOwnProperty("name")){
-      return{ toolbar:toolbar};
+  let toolbar = {};
+  toolbar = new ToolbarModel();
+  if (!state.toolbar.hasOwnProperty("name")) {
+    return { toolbar: toolbar };
   }
-  return {toolbar: state.toolbar};
+  return { toolbar: state.toolbar };
 }
 
 function mapDispatchToProps(dispatch) {

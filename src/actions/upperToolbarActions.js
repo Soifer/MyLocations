@@ -4,6 +4,8 @@ import {loadLocations} from './locationActions';
 import {loadCategories} from './categoryActions';
 import {proxySortBy, proxyGroupBy} from './componentsProxyActions';
 import {pageComponents} from '../tools/constants';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
  
 export function setToolbarTypeSuccess(toolbar) {
     return {type: types.SET_TOOLBAR_TYPE_SUCCESS, toolbar};
