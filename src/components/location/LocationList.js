@@ -9,16 +9,18 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import Map from '../maps/map';
+
 const styles = {
   gridList: {
-    height: 450,
+    minHeight: 450,
     backgroundSize: "contain",
-    margin:0,
-    marginTop:56,
-    marginBottom:56
+    margin:"56px 0 56px 0"
   },
   gridTile : {  
     width: "100%",
+    color:"rgb(68, 0, 22)",
+    fontWeight: 800,
+    fontSize:13
 }
 };
 
@@ -46,16 +48,17 @@ const LocationList = ({locations, groupby}) => {
           >
        {groupedLocations.map((location, index) => (
         <GridTile
-          titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+          titleBackground="linear-gradient(rgba(0, 151, 167, 0.7) 0%, rgba(0, 151, 167, 0.5) 70%, rgba(0, 0, 0, 0.2) 100%)"
           key={index}
           title={location.name}
           subtitle={<span>{location.address}</span>}
-          actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-          style={styles.gridTile}
+          actionIcon={<IconButton><StarBorder color="rgb(68, 0, 22)" /></IconButton>}
+          titleStyle={styles.gridTile}
+          subtitleStyle={styles.gridTile}
           rows={index%5 == 0 ? 2 : 1}
           cols={index%5 == 0 ? 2 : 1}>
           {/* <img  src="src/tools/images/map.jpg" /> */}
-          <Map/>
+          <Map center={location.coordinate} name={location.name}/>
         </GridTile>
         ))} 
      </GridList>

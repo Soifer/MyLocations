@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import FontIcon from 'material-ui/FontIcon';
 import Chip from 'material-ui/Chip';
 
-const MARKER_SIZE = 100;
+const MARKER_SIZE = 60;
 const mapStyle = {   
     fontWeight: 900,
     position: 'absolute',
     width: MARKER_SIZE,
     height: MARKER_SIZE,
-    left: -MARKER_SIZE / 2,
-    top: -MARKER_SIZE / 2
+    left: -20,
+    top: -60
 
 };
 const fontStyleChip = {

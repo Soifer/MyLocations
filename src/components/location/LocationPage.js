@@ -5,6 +5,10 @@ import { bindActionCreators } from 'redux';
 import * as locationActions from '../../actions/locationActions';
 import LocationList from './LocationList';
 
+// const styleList = {
+//     marginBottom:50
+// }
+
 class LocationPage extends Component {
     constructor(props) {
         super(props);
