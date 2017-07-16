@@ -8,16 +8,17 @@ import {Link} from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-
+import Map from '../maps/map';
 const styles = {
   gridList: {
     height: 450,
     backgroundSize: "contain",
     margin:0,
-    marginTop:56
+    marginTop:56,
+    marginBottom:56
   },
   gridTile : {  
-    width: "100%"
+    width: "100%",
 }
 };
 
@@ -35,9 +36,8 @@ const LocationList = ({locations, groupby}) => {
   console.log("groupby",groupby);
   return (
   <div>
-
-       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-     <GridList
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>      
+       <GridList
           cols={2}
           rows={2}
           padding={2}
@@ -54,10 +54,11 @@ const LocationList = ({locations, groupby}) => {
           style={styles.gridTile}
           rows={index%5 == 0 ? 2 : 1}
           cols={index%5 == 0 ? 2 : 1}>
-          <img  src="src/tools/images/map.jpg" />
+          {/* <img  src="src/tools/images/map.jpg" /> */}
+          <Map/>
         </GridTile>
-      ))} 
-    </GridList>
+        ))} 
+     </GridList>
     </MuiThemeProvider> 
   </div>
     );
