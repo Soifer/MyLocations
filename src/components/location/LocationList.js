@@ -16,11 +16,11 @@ const styles = {
     backgroundSize: "contain",
     margin:"56px 0 56px 0"
   },
-  gridTile : {  
+  gridTile : {      
     width: "100%",
     color:"rgb(68, 0, 22)",
     fontWeight: 800,
-    fontSize:13
+    fontSize: 13
 }
 };
 

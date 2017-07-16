@@ -15,10 +15,10 @@ const mapStyle = {
 };
 const fontStyleChip = {
     color: "rgb(0, 151, 167)"
-}
+};
 const fontStyleIcon = {
      color: 'rgb(189, 4, 4)'
-}
+};
 
 const MapView = ({text}) => {
     return (
