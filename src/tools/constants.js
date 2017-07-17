@@ -4,6 +4,6 @@ export const pageComponents = {
 };
 export const sortTypes = {
      az : "A..Z",
-     date: "DATE"
+     date: "RECENT"
 };
 

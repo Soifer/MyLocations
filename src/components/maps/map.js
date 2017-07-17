@@ -4,15 +4,8 @@ import GoogleMapReact from 'google-map-react';
 import MapView from './mapView';
 
 class Map extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            maps: {}
-        };
 
-    }
-
-    onChange = (data) =>{ }
+    onChange = (data) =>{ } //rerender maps
 
     createMapOptions = (maps) => {
         return {

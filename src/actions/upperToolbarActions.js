@@ -28,17 +28,14 @@ export function setToolbarType(type, data) {
         let toolbar = new ToolbarModel();
         switch (type) {
             case pageComponents.locations:
-                console.log("case locations", data.categories);
                 toolbar.groupby = data.categories.length > 0
                     ? data.categories
                     : [];
                 toolbar.name = type;
-                console.log("type", toolbar);
                 dispatch(setToolbarTypeSuccess(toolbar));
                 break;
             case pageComponents.categories:
                 toolbar.name = type;
-                console.log("type", toolbar);
                 dispatch(setToolbarTypeSuccess(toolbar));
                 break;
             default:
