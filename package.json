@@ -7,7 +7,8 @@
     "test": "mocha  --compilers js:babel-core/register --reporter nyan  src/tools/testSetup.js \"src/**/*.test.js\" ",
     "test:watch": "npm run test -- --watch",
     "babel": "babel",
-    "webpack": "webpack",
+    "webpack:prod": "SET NODE_ENV=production && webpack -p --devtool cheap-module-eval-source-map",
+    "webpack": "SET NODE_ENV=development && webpack -p --devtool eval",
     "serve": "webpack-dev-server --progress --hot --inline --history-api-fallback",
     "eslint": "lint",
     "start": "npm-run-all --parallel  test:watch serve "

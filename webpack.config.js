@@ -1,7 +1,8 @@
 //var WebpackDevServer = require("webpack-dev-server");
 const webpack = require('webpack');
 const LoaderOptionsPlugin = require("webpack/lib/LoaderOptionsPlugin");
-// var path = require('path');
+
+ const path = require('path');
 
 module.exports = {
   entry: [
@@ -9,13 +10,20 @@ module.exports = {
     'webpack/hot/only-dev-server',
     "./src/index.js" // Your appʼs entry point
   ],
-  watch: true,
-  output: {
-    path: __dirname,
+  devtool: "eval",
+  // watch: true,
+  output: {    
+    path: __dirname + '/dist',
     filename: 'bundle.js'
   },
   target: 'web',
   plugins: [
+    new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify('production')
+    }
+  }),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.LoaderOptionsPlugin({
       options: {
         eslint: {
@@ -26,7 +34,6 @@ module.exports = {
       debug: true
     })
   ],
-  devtool: "source-map",
   module: {
     rules: [{
         test: /\.js?$/,

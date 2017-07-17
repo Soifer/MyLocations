@@ -29,7 +29,7 @@ const MapView = ({text}) => {
             <FontIcon className="material-icons" style={fontStyleIcon}>location_on</FontIcon>
         </div>
     );
-}
+};
 MapView.propTypes = {
     text: PropTypes.string.isRequired
 };
