@@ -35,7 +35,6 @@ const LocationList = ({locations, groupby}) => {
   else{
     groupedLocations = locations;
   }
-  console.log("groupby",groupby);
   return (
   <div>
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>      
@@ -44,8 +43,7 @@ const LocationList = ({locations, groupby}) => {
           rows={2}
           padding={2}
           cellHeight={180}
-          style={styles.gridList}
-          >
+          style={styles.gridList}>
        {groupedLocations.map((location, index) => (
         <GridTile
           titleBackground="linear-gradient(rgba(0, 151, 167, 0.7) 0%, rgba(0, 151, 167, 0.5) 70%, rgba(0, 0, 0, 0.2) 100%)"

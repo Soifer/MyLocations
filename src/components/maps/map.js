@@ -6,8 +6,13 @@ import MapView from './mapView';
 class Map extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            maps: {}
+        };
 
     }
+
+    onChange = (data) =>{ }
 
     createMapOptions = (maps) => {
         return {
@@ -34,15 +39,19 @@ class Map extends Component {
                     ]
                 }
             ]
-        }
+        };
     }
     render() {
         return (
             <GoogleMapReact
                 options={this.createMapOptions}
-                defaultCenter={this.props.center}
+                onChange={this.onChange}
+                center={this.props.center}
                 defaultZoom={this.props.zoom}>
-                <MapView lat={this.props.center.lat} lng={this.props.center.lng} text={this.props.name}/>
+                <MapView
+                    lat={this.props.center.lat}
+                    lng={this.props.center.lng}
+                    text={this.props.name}/>
             </GoogleMapReact>
         );
     }
@@ -56,9 +65,10 @@ Map.propTypes = {
 }
 
 Map.defaultProps = {
-    center: {
-     lat: 59.95, lng: 30.33
-    },
+    // center: {
+    //     lat: 59.95,
+    //     lng: 30.33
+    // },
     key: "AIzaSyA7g5H_vr9_gImIeNp_9ObmGL143HERAf0",
     zoom: 10
 };

@@ -25,8 +25,7 @@ const MapView = ({text}) => {
         <div style={mapStyle}>
             <Chip labelStyle={fontStyleChip} >
                {text}
-            </Chip>
-            
+            </Chip>            
             <FontIcon className="material-icons" style={fontStyleIcon}>location_on</FontIcon>
         </div>
     );
