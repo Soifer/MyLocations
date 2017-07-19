@@ -66,13 +66,15 @@ class UpperToolbar extends React.Component {
           </ToolbarGroup>
         }
         <ToolbarGroup>
-          <ToolbarTitle style={this.titleStyle} text={this.props.toolbar.name} />
-          <FontIcon className="muidocs-icon-custom-sort" />
+          <ToolbarTitle style={this.titleStyle} text={this.props.toolbar.name} />         
         </ToolbarGroup>
         <ToolbarGroup>
-          <FloatingActionButton mini={true}>
+          <IconButton iconClassName="muidocs-icon-custom-github" />
+          <FontIcon className="material-icons" color="rgb(68, 0, 22)">add_location</FontIcon>
+          {/* <FloatingActionButton mini={true}>
             <ContentAdd />
-          </FloatingActionButton>
+            <i class="material-icons">add_location</i>
+          </FloatingActionButton> */}
         </ToolbarGroup>
       </Toolbar>
     );

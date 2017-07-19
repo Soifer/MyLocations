@@ -58,10 +58,6 @@ Map.propTypes = {
 }
 
 Map.defaultProps = {
-    // center: {
-    //     lat: 59.95,
-    //     lng: 30.33
-    // },
     key: "AIzaSyA7g5H_vr9_gImIeNp_9ObmGL143HERAf0",
     zoom: 10
 };

@@ -8,6 +8,7 @@ import {Link} from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import LocaitonDialog from './LocationDialog';
 import Map from '../maps/map';
 
 const styles = {
@@ -37,7 +38,6 @@ const LocationList = ({locations, groupby}) => {
   }
 
   const onClick = (event) =>{
-    console.log("click");
     window.navigator.vibrate(200);
  };
 
@@ -57,7 +57,7 @@ const LocationList = ({locations, groupby}) => {
           key={index}
           title={location.name}
           subtitle={<span>{location.address}</span>}
-          actionIcon={<IconButton><FontIcon className="material-icons" color="rgb(68, 0, 22)">explore</FontIcon></IconButton>}
+          actionIcon={<LocaitonDialog location={location}/>}
           titleStyle={styles.gridTile}
           subtitleStyle={styles.gridTile}
           rows={index%5 == 0 ? 2 : 1}
