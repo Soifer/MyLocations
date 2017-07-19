@@ -9,8 +9,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import LocaitonDialog from './LocationDialog';
-import Map from '../maps/map';
-
+// import Map from '../maps/map';
+import LocationTabs  from './LocationsTabs';
 const styles = {
   gridList: {
     minHeight: 450,
@@ -47,23 +47,21 @@ const LocationList = ({locations, groupby}) => {
        <GridList         
           cols={2}
           rows={2}
-          padding={2}
+          padding={1}
           cellHeight={180}
           style={styles.gridList}>
        {groupedLocations.map((location, index) => (
         <GridTile
-          onClick={onClick}
           titleBackground="linear-gradient(rgba(0, 151, 167, 0.7) 0%, rgba(0, 151, 167, 0.5) 70%, rgba(0, 0, 0, 0.2) 100%)"
           key={index}
-          title={location.name}
-          subtitle={<span>{location.address}</span>}
+         // title={location.name}
+         // subtitle={<span>{location.address}</span>}
           actionIcon={<LocaitonDialog location={location}/>}
           titleStyle={styles.gridTile}
           subtitleStyle={styles.gridTile}
-          rows={index%5 == 0 ? 2 : 1}
+          rows={index%5 == 0 ? 1 : 1}
           cols={index%5 == 0 ? 2 : 1}>
-          {/* <img  src="src/tools/images/map.jpg" /> */}
-          <Map center={location.coordinate} name={location.name}/>
+           <LocationTabs location={location} /> 
         </GridTile>
         ))} 
      </GridList>

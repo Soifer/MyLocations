@@ -7,7 +7,7 @@
     "test": "mocha  --compilers js:babel-core/register --reporter nyan  src/tools/testSetup.js \"src/**/*.test.js\" ",
     "test:watch": "npm run test -- --watch",
     "babel": "babel",
-    "webpack:prod": "SET NODE_ENV=production && webpack -p --devtool cheap-module-eval-source-map",
+    "webpack:prod": "SET NODE_ENV=production && webpack -p --devtool cheap-module-source-map",
     "webpack": "SET NODE_ENV=development && webpack -p --devtool eval",
     "serve": "webpack-dev-server --progress --hot --inline --history-api-fallback",
     "eslint": "lint",
@@ -100,6 +100,7 @@
     "material-ui-icons": "^1.0.0-alpha.19",
     "prop-types": "^15.5.10",
     "react-router-redux": "^4.0.8",
+    "react-swipeable-views": "^0.12.4",
     "react-toastr": "^2.8.2",
     "toastr": "^2.1.2"
   },

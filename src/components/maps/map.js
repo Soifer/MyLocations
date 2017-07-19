@@ -6,7 +6,9 @@ import MapView from './mapView';
 class Map extends Component {
 
     onChange = (data) =>{ } //rerender maps
-
+    onClick = (data) =>{
+         window.navigator.vibrate(300,200);
+    }
     createMapOptions = (maps) => {
         return {
             panControl: false,
