@@ -3,12 +3,17 @@ import PropTypes from 'prop-types';
 import GoogleMapReact from 'google-map-react';
 import MapView from './mapView';
 
+const styles = {
+    map:{
+        height:"10px"
+    }
+}
+
 class Map extends Component {
 
     onChange = (data) =>{ } //rerender maps
-    onClick = (data) =>{
-         window.navigator.vibrate(300,200);
-    }
+    onClick ({ x, y, lat, lng, event }){}
+
     createMapOptions = (maps) => {
         return {
             panControl: false,
@@ -19,6 +24,8 @@ class Map extends Component {
             zoomControl: false,
             disableDoubleClickZoom: true,
             fullscreenControl: false,
+            clickableIcons: false,
+            clickableLabels:false ,
             styles: [
                 {
                     stylers: [
@@ -39,8 +46,10 @@ class Map extends Component {
     render() {
         return (
             <GoogleMapReact
+            style={styles.map}
                 options={this.createMapOptions}
                 onChange={this.onChange}
+                onClick={this.onClick}
                 center={this.props.center}
                 defaultZoom={this.props.zoom}>
                 <MapView

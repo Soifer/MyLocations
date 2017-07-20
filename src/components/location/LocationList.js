@@ -38,6 +38,7 @@ const LocationList = ({locations, groupby}) => {
   }
 
   const onClick = (event) =>{
+    console.log("location list clicked");
     window.navigator.vibrate(200);
  };
 
@@ -57,11 +58,11 @@ const LocationList = ({locations, groupby}) => {
          // title={location.name}
          // subtitle={<span>{location.address}</span>}
           actionIcon={<LocaitonDialog location={location}/>}
-          titleStyle={styles.gridTile}
-          subtitleStyle={styles.gridTile}
-          rows={index%5 == 0 ? 1 : 1}
+          //titleStyle={styles.gridTile}
+         // subtitleStyle={styles.gridTile}
+          rows={1}
           cols={index%5 == 0 ? 2 : 1}>
-           <LocationTabs location={location} /> 
+           <LocationTabs  location={location} /> 
         </GridTile>
         ))} 
      </GridList>
