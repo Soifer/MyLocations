@@ -12,8 +12,9 @@ const styles = {
 class Map extends Component {
 
     onChange = (data) =>{ } //rerender maps
-    onClick ({ x, y, lat, lng, event }){}
-
+    onClick ({ x, y, lat, lng, event }){
+          window.navigator.vibrate(300,200);
+    }
     createMapOptions = (maps) => {
         return {
             panControl: false,
