@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import Map from '../maps/map';
+import LocaitonDialog from './LocationDialog';
 
 const styles = {
   tabsStyle: {
@@ -30,19 +31,26 @@ class LocationTabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      slideIndex: 0
+      slideIndex: 0,
+      open: false
     };
   }
-  
 
-  handleChange = (value) => {
-    console.log("handleChange");
+  handleClick = (location) => { 
+    window.navigator.vibrate(300, 200);
+
+
+    console.log("click vibrate");
+  };
+
+  handleChange = (value) => {    
     this.setState({slideIndex: value});
   };
           
   render() {
     return (
       <div>
+         <LocaitonDialog /> 
         <Tabs
           inkBarStyle={styles.inkBarStyle}
           tabItemContainerStyle={styles.tabsStyle}
@@ -52,8 +60,8 @@ class LocationTabs extends React.Component {
           <Tab label="Description" value={1}/>
         </Tabs>
         <SwipeableViews  disabled={false} index={this.state.slideIndex} onChangeIndex={this.handleChange}>
-          <div >
-             <Map  center={this.props.location.coordinate} name={this.props.location.name}/> 
+          <div onClick={this.dialogOpen}>
+             <Map handleClick={this.handleClick(location)} center={this.props.location.coordinate} name={this.props.location.name}/>             
           </div>
           <div style={styles.slide}>
             <span>
@@ -74,8 +82,7 @@ class LocationTabs extends React.Component {
 }
 
 LocationTabs.propTypes = {
-  location: PropTypes.object.isRequired,
-  onTouch:PropTypes.func.isRequired
+  location: PropTypes.object.isRequired
 };
 
 export default LocationTabs;

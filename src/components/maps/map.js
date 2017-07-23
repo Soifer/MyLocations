@@ -4,16 +4,18 @@ import GoogleMapReact from 'google-map-react';
 import MapView from './mapView';
 
 const styles = {
-    map:{
-        height:"10px"
+    map: {
+        height: "10px"
     }
 }
 
 class Map extends Component {
 
-    onChange = (data) =>{ } //rerender maps
-    onClick ({ x, y, lat, lng, event }){
-          window.navigator.vibrate(300,200);
+    onChange = (data) => {} //rerender maps
+    onClick({x, y, lat, lng, event}) {
+        this.props.handleClick;
+        console.log("map onclick");
+        // window.navigator.vibrate(300, 200);
     }
     createMapOptions = (maps) => {
         return {
@@ -26,7 +28,7 @@ class Map extends Component {
             disableDoubleClickZoom: true,
             fullscreenControl: false,
             clickableIcons: false,
-            clickableLabels:false ,
+            clickableLabels: false,
             styles: [
                 {
                     stylers: [
@@ -47,7 +49,7 @@ class Map extends Component {
     render() {
         return (
             <GoogleMapReact
-            style={styles.map}
+                style={styles.map}
                 options={this.createMapOptions}
                 onChange={this.onChange}
                 onClick={this.onClick}
@@ -66,7 +68,8 @@ Map.propTypes = {
     center: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     key: PropTypes.string,
-    zoom: PropTypes.number
+    zoom: PropTypes.number,
+    handleClick:PropTypes.func.isRequired
 }
 
 Map.defaultProps = {

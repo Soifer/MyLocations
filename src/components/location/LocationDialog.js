@@ -5,6 +5,10 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import Map from '../maps/map';
+import * as locationActions from '../../actions/locationActions';
 
 const customContentStyle = {
     width: '90%',
@@ -17,7 +21,8 @@ const customContentStyle = {
  class LocaitonDialog extends React.Component {
      constructor(props) {
          super(props);
-     }
+         console.log("LocaitonDialog",this.props.map);
+       }
 
     state = {
         open: false
@@ -29,17 +34,18 @@ const customContentStyle = {
 
     handleClose = () => {
         this.setState({open: false});
+
     };
 
     render() {
         const actions = [
-         <FlatButton label = "Cancel" primary = {true}  onTouchTap = {this.handleClose} />,
-             < FlatButton label = "Submit" primary = {true} onTouchTap = {this.handleClose} />
+             <FlatButton label = "Cancel" primary = {true}  onTouchTap = {this.handleClose} />,
+             <FlatButton label = "Submit" primary = {true} onTouchTap = {this.handleClose} />
         ];
 
         return (
             <div>
-                <IconButton><FontIcon className="material-icons"  onTouchTap={this.handleOpen} color="rgb(68, 0, 22)">explore</FontIcon></IconButton>
+                 {/* <IconButton><FontIcon className="material-icons"  onTouchTap={this.handleOpen} color="rgb(68, 0, 22)">explore</FontIcon></IconButton>  */}
                 <Dialog
                     title={this.props.location.name}
                     actions={actions}
@@ -57,4 +63,11 @@ LocaitonDialog.propTypes = {
     location : PropTypes.object.isRequired
 };
 
-export default LocaitonDialog;
+
+function mapStateToProps(state, ownProps) {
+    return {
+        location: state.location
+    };
+}
+
+export default connect(mapStateToProps)(LocaitonDialog);

@@ -36,6 +36,13 @@ export function loadLocations() {
     };
 }
 
+
+export function loadLocation() {
+    return function (dispatch) {
+        dispatch(sortByLocationsSuccess());
+    };
+}
+
 export function locationsSortBy(sort) {
     return function (dispatch) {
         dispatch(sortByLocationsSuccess(sort));
