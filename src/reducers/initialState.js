@@ -1,6 +1,6 @@
 export default {
     locations : [],
-    dialogLocation: {},
+    dialogLocation: {location:{},open:false},
     categories : [],
     toolbar : {},
     selectedIndex : 0,

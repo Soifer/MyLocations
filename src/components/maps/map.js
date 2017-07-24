@@ -12,11 +12,9 @@ const styles = {
 class Map extends Component {
 
     onChange = (data) => {} //rerender maps
-    onClick({x, y, lat, lng, event}) {
-        this.props.handleClick;
-        console.log("map onclick");
-        // window.navigator.vibrate(300, 200);
-    }
+    // onClick({x, y, lat, lng, event}) {
+    //       // window.navigator.vibrate(300, 200);
+    // }
     createMapOptions = (maps) => {
         return {
             panControl: false,
@@ -52,7 +50,7 @@ class Map extends Component {
                 style={styles.map}
                 options={this.createMapOptions}
                 onChange={this.onChange}
-                onClick={this.onClick}
+              //  onClick={this.onClick}
                 center={this.props.center}
                 defaultZoom={this.props.zoom}>
                 <MapView
@@ -68,12 +66,12 @@ Map.propTypes = {
     center: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     key: PropTypes.string,
-    zoom: PropTypes.number,
-    handleClick:PropTypes.func.isRequired
+    zoom: PropTypes.number
 }
 
 Map.defaultProps = {
     key: "AIzaSyA7g5H_vr9_gImIeNp_9ObmGL143HERAf0",
-    zoom: 10
+    zoom: 10,
+    center:{lat:'',lng:''}
 };
 export default Map;

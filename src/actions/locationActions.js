@@ -5,6 +5,7 @@ import {loadCategories} from './categoryActions';
 import {setBottomToolbarType} from './bottomToolbarActions';
 import {sortTypes} from '../tools/constants';
 import {groupByCategories} from './groupByCategoriesActions';
+import {loadDialogLocation} from './locationDialogActions';
 
 export function loadLocationsSuccess(locations) {
     return {type: types.LOAD_LOCATIONS_SUCCESS, locations};
@@ -37,9 +38,9 @@ export function loadLocations() {
 }
 
 
-export function loadLocation() {
+export function loadLocation(data) {
     return function (dispatch) {
-        dispatch(sortByLocationsSuccess());
+        dispatch(loadDialogLocation(data));
     };
 }
 

@@ -10,7 +10,7 @@ module.exports = {
     'webpack/hot/only-dev-server',
     "./src/index.js" // Your appʼs entry point
   ],
-  devtool: "eval",
+  devtool: "source-map",
   // watch: true,
   output: {    
     path: __dirname + '/dist',
@@ -18,11 +18,11 @@ module.exports = {
   },
   target: 'web',
   plugins: [
-    new webpack.DefinePlugin({
-    'process.env': {
-      'NODE_ENV': JSON.stringify('production')
-    }
-  }),
+  //   new webpack.DefinePlugin({
+  //   'process.env': {
+  //     'NODE_ENV': JSON.stringify('production')
+  //   }
+  // }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.LoaderOptionsPlugin({
       options: {

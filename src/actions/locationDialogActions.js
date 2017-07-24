@@ -3,7 +3,7 @@ import {sortTypes} from '../tools/constants';
 
 
 export function loadDialogLocationSuccess(dialogLocation) {
-    return {type: types.LOAD_LOCATIONS_SUCCESS, dialogLocation};
+    return {type: types.LOAD_DIALOGLOCATION_SUCCESS, dialogLocation};
 }
 
 

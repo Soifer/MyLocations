@@ -5,8 +5,8 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import Map from '../maps/map';
 import * as locationActions from '../../actions/locationActions';
 
@@ -18,16 +18,19 @@ const customContentStyle = {
 /**
  * The dialog width has been set to occupy the full width of browser through the `contentStyle` property.
  */
- class LocaitonDialog extends React.Component {
-     constructor(props) {
-         super(props);
-         console.log("LocaitonDialog",this.props.map);
-       }
-
+class LocaitonDialog extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     state = {
-        open: false
+        open: this.props.dialogLocation.open
     };
 
+    componentWillReceiveProps(data) {
+        if (data.dialogLocation.open) {
+             this.setState({open: true});
+        }
+    }
     handleOpen = () => {
         this.setState({open: true});
     };
@@ -38,21 +41,22 @@ const customContentStyle = {
     };
 
     render() {
-        const actions = [
-             <FlatButton label = "Cancel" primary = {true}  onTouchTap = {this.handleClose} />,
-             <FlatButton label = "Submit" primary = {true} onTouchTap = {this.handleClose} />
-        ];
+        const actions = [ <FlatButton label = "Cancel" primary = {true} onTouchTap = {this.handleClose} />,
+                          <FlatButton label = "Submit" primary = {true} onTouchTap = {this.handleClose} />
+                        ];
 
         return (
             <div>
-                 {/* <IconButton><FontIcon className="material-icons"  onTouchTap={this.handleOpen} color="rgb(68, 0, 22)">explore</FontIcon></IconButton>  */}
+                {/* <IconButton><FontIcon className="material-icons"  onTouchTap={this.handleOpen} color="rgb(68, 0, 22)">explore</FontIcon></IconButton>  */}
                 <Dialog
-                    title={this.props.location.name}
+                    title={this.props.dialogLocation.location.name}
                     actions={actions}
                     modal={false}
                     contentStyle={customContentStyle}
                     open={this.state.open}>
-                     {this.props.location.name}
+                    {this.props.dialogLocation.location.name}
+                    <Map  center={this.props.dialogLocation.location && this.props.dialogLocation.location.coordinate} 
+                                  name={this.props.dialogLocation.location && this.props.dialogLocation.location.name}/>           
                 </Dialog>
             </div>
         );
@@ -60,14 +64,11 @@ const customContentStyle = {
 }
 
 LocaitonDialog.propTypes = {
-    location : PropTypes.object.isRequired
+    dialogLocation: PropTypes.object.isRequired
 };
 
-
 function mapStateToProps(state, ownProps) {
-    return {
-        location: state.location
-    };
+    return {dialogLocation: state.dialogLocation};
 }
 
 export default connect(mapStateToProps)(LocaitonDialog);

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import Map from '../maps/map';
-import LocaitonDialog from './LocationDialog';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as locationActions from '../../actions/locationActions';
 
 const styles = {
   tabsStyle: {
@@ -36,12 +38,11 @@ class LocationTabs extends React.Component {
     };
   }
 
-  handleClick = (location) => { 
-    window.navigator.vibrate(300, 200);
-
-
-    console.log("click vibrate");
-  };
+  handleClick = (event) => {
+    console.log("click click");
+    this.props.actions.loadLocation({location:this.props.location,open:true});
+    window.navigator.vibrate(200);
+  }
 
   handleChange = (value) => {    
     this.setState({slideIndex: value});
@@ -49,8 +50,7 @@ class LocationTabs extends React.Component {
           
   render() {
     return (
-      <div>
-         <LocaitonDialog /> 
+      <div>        
         <Tabs
           inkBarStyle={styles.inkBarStyle}
           tabItemContainerStyle={styles.tabsStyle}
@@ -60,8 +60,8 @@ class LocationTabs extends React.Component {
           <Tab label="Description" value={1}/>
         </Tabs>
         <SwipeableViews  disabled={false} index={this.state.slideIndex} onChangeIndex={this.handleChange}>
-          <div onClick={this.dialogOpen}>
-             <Map handleClick={this.handleClick(location)} center={this.props.location.coordinate} name={this.props.location.name}/>             
+          <div onClick={this.handleClick}>
+               <Map  center={this.props.location.coordinate} name={this.props.location.name}/>               
           </div>
           <div style={styles.slide}>
             <span>
@@ -73,7 +73,6 @@ class LocationTabs extends React.Component {
             <span>
               <p>Coordinates: {this.props.location.coordinate.lat}, {this.props.location.coordinate.lng}</p>
             </span>
-
           </div>
         </SwipeableViews>
       </div>
@@ -82,7 +81,15 @@ class LocationTabs extends React.Component {
 }
 
 LocationTabs.propTypes = {
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
-export default LocationTabs;
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(locationActions, dispatch)
+    };
+}
+
+export default connect(null,mapDispatchToProps)(LocationTabs);
+

@@ -21,7 +21,7 @@ class LocationPage extends Component {
     render() {
         return (
             <div>
-                <LocationList locations={this.props.locations} groupby={this.props.groupby} />
+                <LocationList />
             </div>
         );
     }

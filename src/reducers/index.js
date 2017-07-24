@@ -4,6 +4,7 @@ import categories from './categoryReducer';
 import toolbar from './upperToolbarReducer';
 import selectedIndex from './bottomToolbarReducer';
 import groupby from './groupByCategoriesReducer';
+import dialogLocation from './dialogLocationReducer';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     categories,
     selectedIndex,
     groupby,
+    dialogLocation,
     routing: routerReducer
 });
 
